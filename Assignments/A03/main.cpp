@@ -2,8 +2,8 @@
 *                    
 *  Author:           Kolten Pulliam
 *  Email:            klpulliam44@gmail.com
-*  Label:            A04
-*  Title:            Assingment 4 - Commenting Code
+*  Label:            A03
+*  Title:            Assingment 3 - Commenting Code
 *  Course:           3013 Advanced Structures & Algorithms
 *  Semester:         Spring 2022
 * 
