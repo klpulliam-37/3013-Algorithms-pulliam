@@ -1,0 +1,17 @@
+#############################################################
+        Assignment 4 - Resizing the Stack
+        CMPS 3013
+        Kolten Pulliam
+
+        Config Params:
+                Full Threshold: 0.85
+                Empty Threshold: 0.15
+                Growth Ratio: 2.0
+                Shrink Ratio: 0.5
+
+        Processed 99928 commands.
+
+        Max Stack Size: 1280
+        End Stack Size: 1280
+        Stack Resized: 55
+#############################################################
