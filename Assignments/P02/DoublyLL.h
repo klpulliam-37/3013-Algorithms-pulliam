@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -23,6 +24,8 @@ class DoublyLL{
     bool remove(string searchKey);
     void print() const;
     void printBackwards() const;
+    vector<string> FindRelated(string& word);
+    bool isRelated(Node* temp, string& word);
     
 
   private:

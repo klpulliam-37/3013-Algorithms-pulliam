@@ -85,3 +85,27 @@ void DoublyLL::printBackwards() const{
     traverse = traverse->prev;
   }
 }
+
+vector<string> DoublyLL::FindRelated(string& word) {
+  vector<string> related;
+  Node *temp = head;
+    
+  while(temp) {
+    if(isRelated(temp, word)) {
+      related.push_back(temp->data);
+    }
+    temp = temp->next;
+  }
+
+  return related;
+}
+
+bool DoublyLL::isRelated(Node *temp, string& word) {
+  int size = word.size();
+  for(int i = 0; i < size; i++){
+    if(temp->data[i] != word[i]) {
+      return false;
+    }
+  }
+  return true;
+}
