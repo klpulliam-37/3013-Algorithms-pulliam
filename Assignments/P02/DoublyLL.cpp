@@ -1,10 +1,28 @@
 #include "DoublyLL.h"
 
+/**
+* @brief Constructor 
+* 
+* Creates a new empty Linked List object
+* 
+* @param N/A
+* 
+* @return N/A
+*/
 DoublyLL::DoublyLL(){
   head = nullptr;
   tail = nullptr;
 }
 
+/**
+* @brief Deconstructor
+* 
+* Deletes the Linked List object
+* 
+* @param N/A
+* 
+* @return N/A
+*/
 DoublyLL::~DoublyLL(){
   Node* temp = head;
   while(temp != nullptr){
@@ -14,20 +32,35 @@ DoublyLL::~DoublyLL(){
   }
 }
 
+/**
+* @brief Method
+* 
+* Adds a new node to the end of the list
+* 
+* @param string s - The word being added to the dictionary
+* 
+* @return void
+*/
 void DoublyLL::append(string s){
   if(head == nullptr){
     head = new Node(s);
     tail = head;
   }
   else{
-    Node* traverse = head;
-    while(traverse->next != nullptr){
-      traverse = traverse->next;
-    }
-    traverse->next = new Node(s, nullptr, traverse);
+    tail->next = new Node(s, nullptr, tail);
+    tail = tail->next;
   }
 }
 
+/**
+* @brief Method
+* 
+* Adds a new node to the front of the list
+* 
+* @param string s - The word being added to the dictionary
+* 
+* @return void
+*/
 void DoublyLL::prepend(string s){
   if(head == nullptr){
     head = new Node(s, head);
@@ -40,6 +73,16 @@ void DoublyLL::prepend(string s){
   }
 }
 
+/**
+* @brief Method
+* 
+* Removes a node containing the specified string frome
+* the list.
+* 
+* @param string s - The word being removed from the dictionary
+* 
+* @return bool
+*/
 bool DoublyLL::remove(string searchKey){
   Node *temPtr;
   if(!head){
@@ -67,6 +110,16 @@ bool DoublyLL::remove(string searchKey){
   return false;
 }
 
+/**
+* @brief Method
+* 
+* Prints all of the values within every node of the list 
+* in alphabetical order
+* 
+* @param N/A
+* 
+* @return void
+*/
 void DoublyLL::print() const{
   Node* traverse = head;
   while(traverse != nullptr){
@@ -75,6 +128,16 @@ void DoublyLL::print() const{
   }
 }
 
+/**
+* @brief Method
+* 
+* Prints all of the values within every node of the list 
+* in reverse alphabetical order
+* 
+* @param N/A
+* 
+* @return void
+*/
 void DoublyLL::printBackwards() const{
   Node* traverse = head;
   while(traverse->next != nullptr){
@@ -86,6 +149,17 @@ void DoublyLL::printBackwards() const{
   }
 }
 
+/**
+* @brief Method
+* 
+* Runs through every node to of the list to check wether or 
+* not the current search word is related to the string in the node.
+* If it is, then it adds it to a vector, otherwise it ignores it.
+* 
+* @param string& word - Word that is being compared.
+* 
+* @return vector<string>
+*/
 vector<string> DoublyLL::FindRelated(string& word) {
   vector<string> related;
   Node *temp = head;
@@ -100,12 +174,29 @@ vector<string> DoublyLL::FindRelated(string& word) {
   return related;
 }
 
+/**
+* @brief Method
+* 
+* Compares every letter of the current search word with its 
+* matching index in the dictionary word.
+* 
+* @param Node *temp - Node pointer to access node data
+* @param string& word - Word that is being compared.
+* 
+* @return bool
+*/
 bool DoublyLL::isRelated(Node *temp, string& word) {
   int size = word.size();
-  for(int i = 0; i < size; i++){
-    if(temp->data[i] != word[i]) {
-      return false;
+  
+  // Checks if our substring is bigger than a dictionary word
+  if(word.size() <= temp->data.size()) {
+    for(int i = 0; i < size; i++){
+      if(temp->data[i] != word[i]) {
+        return false;
+      }
     }
+  }else if(word.size() > temp->data.size()) {
+    return false;
   }
   return true;
 }
