@@ -126,10 +126,10 @@ void RunSearch() {
 * @brief Function
 * 
 * Creates a dictionary by taking input from a file and
-* populating nodes in a linked list with said data.
+* populating nodes in a trie tree with said data.
 * 
 * @param string fileName - Name of file to open
-* @param Doublly& dict - Linked list used as dictionary
+* @param Trie& dict - Trie tree used as dictionary
 * 
 * @return void
 */
